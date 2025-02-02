@@ -23,6 +23,9 @@ jobs:
       - name: Install Chrome 
         run: sudo apt-get install google-chrome-stable
 
+      - name: Install Allure CLI
+        run: sudo apt-get install -y allure
+
       # NET Core SDK
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.3.0
@@ -36,9 +39,15 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Run the tests
-        run: dotnet test --logger "trx;LogFileName=testResults.trx"
+        run: dotnet test --logger "trx;LogFileName=test-results.trx"
+
+      - name: All results
+        run: ls -l
 
       # Upload artifacts
+
+      - name: Generate Allure report
+        run: allure generate --clean --output allure-results
 
       - name: Upload trx file as an artifact
         uses: actions/upload-artifact@v4
