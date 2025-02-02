@@ -41,18 +41,15 @@ jobs:
 
       - name: List all files and directories
         run: ls -R
-        
-      - name: List files in the directory
-        run: ls -R ./allure-results
 
       # Allure reporting
       - name: Build Allure report
         uses: simple-elf/allure-report-action@v1.7
         with:
-          allure_results: ./allure-results
+          allure_results: allure-results
 
       - name: Upload Allure report as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: ./allure-report
+          path: allure-report
