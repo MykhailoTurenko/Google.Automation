@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Automation.Tests", "Google.Automation.Tests\Google.Automation.Tests.csproj", "{6BBDFFB2-54CE-4DCB-9F2E-04BF4089E556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Automation.Core", "Google.Automation.Core\Google.Automation.Core.csproj", "{F2D1CC66-C8CD-4CDA-A6F6-AC6C70D25E27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Automation.Ui", "Google.Automation.Ui\Google.Automation.Ui.csproj", "{834CF032-0DC9-4EEE-9A63-E7A8BBF5EE47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BBDFFB2-54CE-4DCB-9F2E-04BF4089E556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBDFFB2-54CE-4DCB-9F2E-04BF4089E556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBDFFB2-54CE-4DCB-9F2E-04BF4089E556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBDFFB2-54CE-4DCB-9F2E-04BF4089E556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D1CC66-C8CD-4CDA-A6F6-AC6C70D25E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D1CC66-C8CD-4CDA-A6F6-AC6C70D25E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D1CC66-C8CD-4CDA-A6F6-AC6C70D25E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D1CC66-C8CD-4CDA-A6F6-AC6C70D25E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834CF032-0DC9-4EEE-9A63-E7A8BBF5EE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834CF032-0DC9-4EEE-9A63-E7A8BBF5EE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834CF032-0DC9-4EEE-9A63-E7A8BBF5EE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834CF032-0DC9-4EEE-9A63-E7A8BBF5EE47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
