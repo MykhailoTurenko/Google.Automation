@@ -23,6 +23,11 @@ jobs:
       - name: Install Chrome 
         run: sudo apt-get install google-chrome-stable
 
+      - name: Write result file
+        run: |
+          mkdir -p "TestResults"
+          chmod 777 "TestResults"
+          
       # NET Core SDK
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.3.0
@@ -36,7 +41,7 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Run the tests
-        run: dotnet test --logger "trx;LogFileName=test-results.trx"
+        run: dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
         continue-on-error: true
 
       - name: All results
