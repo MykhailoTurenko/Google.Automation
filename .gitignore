@@ -1,0 +1,27 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+x64/
+x86/
+
+# Specific files
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.sln.DotSettings
+.idea/
+
+# NUnit test results
+test-results/
+*.TestResult.xml
+
+# NuGet packages
+.nuget/
+
+# Allure reports
+allure-report/
+allure-results/
