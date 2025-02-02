@@ -1,3 +1,4 @@
+using Google.Automation.Core.Configurations;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using WebDriverManager;
@@ -14,6 +15,8 @@ public class FirefoxDriverFactory : IDriverFactory
         properties.AddArgument("disable-extensions");
         properties.AddArgument("disable-popup-blocking");
         properties.AddArgument("disable-infobars");
+        if (Configuration.RemoteRun)
+            properties.AddArgument("--headless");
         
         new DriverManager().SetUpDriver(new FirefoxConfig());
         

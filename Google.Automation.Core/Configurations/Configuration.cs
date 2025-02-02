@@ -5,6 +5,7 @@ namespace Google.Automation.Core.Configurations;
 public static class Configuration
 {
     private static string TestEnvironment { get; set; }
+    public static bool RemoteRun { get; set; }
     public static string Browser { get; set; }
     public static string Host { get; set; }
     
@@ -14,7 +15,8 @@ public static class Configuration
         IConfigurationBuilder builder = new ConfigurationBuilder().SetBasePath(configurationFilesPath);
         IConfigurationRoot configuration;
         
-        if (Environment.GetEnvironmentVariable("REMOTE_RUN") is not null)
+        RemoteRun = Environment.GetEnvironmentVariable("REMOTE_RUN") != null;
+        if (RemoteRun)
         {
             TestEnvironment = Environment.GetEnvironmentVariable("ENVIRONMENT");
             Browser = Environment.GetEnvironmentVariable("BROWSER");

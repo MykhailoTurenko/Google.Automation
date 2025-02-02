@@ -1,3 +1,4 @@
+using Google.Automation.Core.Configurations;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using WebDriverManager;
@@ -15,6 +16,8 @@ public class ChromeDriverFactory : IDriverFactory
         properties.AddArgument("disable-popup-blocking");
         properties.AddArgument("disable-infobars");
         properties.AddArgument("--no-sandbox");
+        if (Configuration.RemoteRun)
+            properties.AddArgument("--headless");
         
         new DriverManager().SetUpDriver(new ChromeConfig());
         
