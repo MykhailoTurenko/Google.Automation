@@ -44,8 +44,8 @@ jobs:
 
       # Upload artifacts
 
-      - name: Allure report
-        uses: afiore/action-allure-report@v0.1.0
+      - name: Allure generate report 
+        uses: yhrunyk/action-allure-generate-report@master
         with:
           results-dir: allure-results
           report-dir: allure-report
