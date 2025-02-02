@@ -9,10 +9,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      REMOTE_RUN: true
+      ENVIRONMENT: "Prod"
+      BROWSER: "Chrome"
 
     steps:
       # Repository
       - uses: actions/checkout@v4
+        with:
+          ref: develop
 
       # NET Core SDK
       - name: Setup .NET Core SDK
