@@ -25,8 +25,8 @@ jobs:
 
       - name: Create test results folder
         run: |
-          mkdir -p $TEST_RESULTS_PATH
-          chmod 777 $TEST_RESULTS_PATH
+          mkdir -p ${{ env.TEST_RESULTS_PATH }}
+          chmod 777 ${{ env.TEST_RESULTS_PATH }}
           
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.3.0
@@ -40,7 +40,7 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Run the tests
-        run: dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory $TEST_RESULTS_PATH
+        run: dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory ${{ env.TEST_RESULTS_PATH }}
         continue-on-error: true
 
       - name: All results
@@ -50,4 +50,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: $TEST_RESULTS_PATH
+          path: ${{ env.TEST_RESULTS_PATH }}
