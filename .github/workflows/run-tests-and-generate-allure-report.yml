@@ -25,10 +25,10 @@ jobs:
 
       - name: Write result file
         run: |
-          mkdir -p "TestResults"
-          chmod 777 "TestResults"
-          mkdir -p "allure-results"
-          chmod 777 "allure-results"
+          mkdir -p "/Google.Automation.Tests/bin/Release/net9.0/TestResults"
+          chmod 777 "/Google.Automation.Tests/bin/Release/net9.0/TestResults"
+          mkdir -p "/Google.Automation.Tests/bin/Release/net9.0/allure-results"
+          chmod 777 "/Google.Automation.Tests/bin/Release/net9.0/allure-results"
           
       # NET Core SDK
       - name: Setup .NET Core SDK
