@@ -4,22 +4,30 @@ namespace Google.Automation.Core.Configurations;
 
 public static class Configuration
 {
+    private static string TestEnvironment { get; set; }
     public static string Browser { get; set; }
     public static string Host { get; set; }
     
     public static void Configure()
     {
-        var configurationFilesPath = Path.Combine(Directory.GetCurrentDirectory(), "Configurations", "Files");
+        string configurationFilesPath = Path.Combine(Directory.GetCurrentDirectory(), "Configurations", "Files");
         IConfigurationBuilder builder = new ConfigurationBuilder().SetBasePath(configurationFilesPath);
-        builder = builder.AddJsonFile("appSettings.json");
-        IConfigurationRoot configuration = builder.Build();
+        IConfigurationRoot configuration;
         
-        Browser = configuration.GetSection("Browser").Value;
+        if (Environment.GetEnvironmentVariable("REMOTE_RUN") is not null)
+        {
+            TestEnvironment = Environment.GetEnvironmentVariable("ENVIRONMENT");
+            Browser = Environment.GetEnvironmentVariable("BROWSER");
+        }
+        else
+        {
+            configuration = builder.AddJsonFile("appSettings.json").Build();
+            
+            Browser = configuration.GetSection("Browser").Value;
+            TestEnvironment  = configuration.GetSection("Environment").Value;
+        }
         
-        string? environment  = configuration.GetSection("Environment").Value;
-        builder.Sources.Clear();
-        builder.AddJsonFile($"{environment.ToLower()}Configs.json");
-        configuration = builder.Build();
+        configuration = builder.AddJsonFile($"{TestEnvironment.ToLower()}Configs.json").Build();
         
         Host = configuration.GetSection("Host").Value;
     }
