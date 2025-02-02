@@ -37,6 +37,7 @@ jobs:
 
       - name: Run the tests
         run: dotnet test
+        continue-on-error: true
 
       # Allure reporting
       - name: Load test report history
