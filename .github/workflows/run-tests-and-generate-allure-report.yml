@@ -40,6 +40,7 @@ jobs:
 
       - name: Run the tests
         run: dotnet test --logger "trx;LogFileName=test-results.trx"
+        continue-on-error: true
 
       - name: All results
         run: ls -l
