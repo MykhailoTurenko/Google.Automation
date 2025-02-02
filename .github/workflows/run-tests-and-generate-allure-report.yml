@@ -13,9 +13,9 @@ jobs:
       REMOTE_RUN: true
       ENVIRONMENT: "Prod"
       BROWSER: "Chrome"
+      TEST_RESULTS_PATH: "/TestResults"
 
     steps:
-      # Repository
       - uses: actions/checkout@v4
         with:
           ref: develop
@@ -23,14 +23,11 @@ jobs:
       - name: Install Chrome 
         run: sudo apt-get install google-chrome-stable
 
-      - name: Write result file
+      - name: Create test results folder
         run: |
-          mkdir -p "/Google.Automation.Tests/bin/Release/net9.0/TestResults"
-          chmod 777 "/Google.Automation.Tests/bin/Release/net9.0/TestResults"
-          mkdir -p "/Google.Automation.Tests/bin/Release/net9.0/allure-results"
-          chmod 777 "/Google.Automation.Tests/bin/Release/net9.0/allure-results"
+          mkdir -p $TEST_RESULTS_PATH
+          chmod 777 $TEST_RESULTS_PATH
           
-      # NET Core SDK
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.3.0
         with:
@@ -43,22 +40,14 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Run the tests
-        run: dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
+        run: dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory $TEST_RESULTS_PATH
         continue-on-error: true
 
       - name: All results
         run: ls -R
 
-      # Upload artifacts
-
-      - name: Allure generate report 
-        uses: yhrunyk/action-allure-generate-report@master
-        with:
-          results-dir: allure-results
-          report-dir: allure-report
-          
-      - name: Upload allure file as an artifact
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: allure-report
+          name: TestResults
+          path: $TEST_RESULTS_PATH
