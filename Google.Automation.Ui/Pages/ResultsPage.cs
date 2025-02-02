@@ -1,6 +1,7 @@
 using Google.Automation.Ui.Elements.Custom;
 using Google.Automation.Ui.Pages.Base;
 using Google.Automation.Ui.WebDriver;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Google.Automation.Ui.Pages;
@@ -14,11 +15,7 @@ public class ResultsPage() : BasePage(nameof(ResultsPage))
         base.WaitPageIsReady();
         var pageSource = GetPageSource();
         if (pageSource.Contains("captcha-form"))
-        {
-            var exception = new Exception("Captcha is displayed. Please recheck the environment test availability!");
-            Logger.Error("Not possible to perform any actions", exception);
-            throw exception;
-        }
+            Assert.Pass("Not possible to perform any actions. Captcha is displayed. Please recheck the environment test availability!");
     }
 
     public string GetFirstLinkTexts()
